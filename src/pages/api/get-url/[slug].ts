@@ -23,6 +23,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.send(JSON.stringify({ message: 'slug not found' }))
     return;
   }
-
+  res.setHeader('Content-Type', 'application/json')
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Cache-Control', 's-maxage=1000000, stale-while-revalidate')
   return res.json(data)
 }
