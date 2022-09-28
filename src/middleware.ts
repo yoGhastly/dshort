@@ -10,7 +10,9 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   console.log('Path??', req.nextUrl.pathname)
 
   const slug = req.nextUrl.pathname.split("/").pop()
-
+  if (!slug) {
+    return;
+  }
   console.log('Full nextUrl', req.nextUrl)
 
   const data = await (
